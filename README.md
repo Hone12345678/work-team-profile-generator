@@ -1,4 +1,4 @@
-# Employee-KeepTrack
+# Work Team Profile Generator
 
 
 ## Description
@@ -39,7 +39,11 @@ THEN I exit the application, and the HTML is generated
 
 ## Video Demo
 
+-Demo of Functionality
+https://drive.google.com/file/d/1rDICN2-fi-d_V2e3IaBD9ucaFrTqNzWg/view
 
+-Tests Video
+https://drive.google.com/file/d/1_8xRbQvdi3IzpyPsg2aIjPlw7myXRcuj/view
 
 ## Features
 
