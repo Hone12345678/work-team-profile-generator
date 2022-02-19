@@ -15,7 +15,7 @@ let htmlArray = []
     return `  
     <div class="card" style="width: 18rem;">
     <div class="card-body p-3 mb-2 bg-primary text-white">
-    <h5 class="card-title">Card ${employeeText[i].name}, ${employeeText[i].role}</h5>
+    <h5 class="card-title">${employeeText[i].name}, ${employeeText[i].role}</h5>
     <p class="card-text"> ID: ${employeeText[i].id}</p>
     <p class="card-text"> Email: ${employeeText[i].email}</p>
     <p class="card-text"> Office number: ${employeeText[i].officeNum}</p>
@@ -29,7 +29,7 @@ let htmlArray = []
 
     <div class="card" style="width: 18rem;">
     <div class="card-body p-3 mb-2 bg-secondary text-white">
-      <h5 class="card-title">Card ${employeeText[i].name}, ${employeeText[i].role}</h5>
+      <h5 class="card-title">${employeeText[i].name}, ${employeeText[i].role}</h5>
       <p class="card-text"> ID: ${employeeText[i].id}</p>
       <p class="card-text"> Email: ${employeeText[i].email}</p>
       <p class="card-text"> GitHub: ${employeeText[i].github}</p>
@@ -43,7 +43,7 @@ let htmlArray = []
     
     <div class="card" style="width: 18rem;">
     <div class="card-body p-3 mb-2 bg-success text-white">
-      <h5 class="card-title">Card ${employeeText[i].name}, ${employeeText[i].role}</h5>
+      <h5 class="card-title">${employeeText[i].name}, ${employeeText[i].role}</h5>
       <p class="card-text"> ID: ${employeeText[i].id}</p>
       <p class="card-text"> Email: ${employeeText[i].email}</p>
       <p class="card-text"> School: ${employeeText[i].school}</p>
