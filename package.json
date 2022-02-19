@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Hone12345678/work-team-profile-generator#readme",
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "inquirer": "^8.2.0"
   },
   "devDependencies": {

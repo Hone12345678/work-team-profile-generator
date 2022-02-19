@@ -13,7 +13,7 @@ function writeToFile(teamMembers) {
     if (!fs.existsSync(OUTPUT_DIR)){
         fs.mkdirSync(OUTPUT_DIR)
     }
-    console.log(teamMembers)
+    // console.log(teamMembers)
     fs.writeFileSync(OUTPUT_PATH, render(teamMembers),'utf-8' )
 
 

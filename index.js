@@ -17,7 +17,8 @@
 // THEN I exit the application, and the HTML is generated
 
 
-// const fs = require('fs');
+// set up inquirer, classes, and writeToFile
+
 const path = require('path');
 const inquirer = require ('inquirer');
 const Manager = require ('./lib/Manager')
@@ -29,10 +30,17 @@ const writeToFile = require ('./utils/writeToFile')
 // const OUTPUT_DIR = path.resolve(__dirname, 'dist')
 // const OUTPUT_PATH = path.join(OUTPUT_DIR, 'index.html')
 // const render = require('./src/htmlTemplate.js')
+
+// team member array to store all of the imputs from the user
 const teamMemArray = []
+
+// id array to store the arrays associated with the team members
 const IDarr = []
 
+
+// collecting team Member information
 function teamMem(){
+  //creating team manager and collection information from user regarding the manager
     function createManager() {
         inquirer.prompt([
  
@@ -74,8 +82,10 @@ function teamMem(){
             },
             
         ])
-        .then((data) => {
-            const manager = new Manager(data.teamManageName, data.empID, data.managerEmail, data.officeNum)
+        .then((data) => { 
+          data.role = 'manager'
+          console.log(data);
+            const manager = new Manager(data.teamManageName, data.empID, data.managerEmail, data.officeNum, data.role)
             teamMemArray.push(manager)
             IDarr.push(data.empID)
             createTeam()
@@ -84,7 +94,7 @@ function teamMem(){
     }
 
     function createTeam(){
-      console.log("hey whats goin on")
+      
         inquirer.prompt([
             {
                 type: 'list',
@@ -108,7 +118,10 @@ function teamMem(){
 
     }
 
+
+
     function createEngineer(){
+      //creating engineer and collection information from user regarding the engineer
         inquirer.prompt([
  
             {
@@ -118,15 +131,15 @@ function teamMem(){
               },
               {
                   type: 'input',
-                  name: 'engineerEmpID',
+                  name: 'empID',
                   message: 'Please enter the Engineers employee ID',
               },
                 {
                   type: 'input',
                   name: 'engineerEmail',
                   message: 'Enter the email. (Required)',
-                  validate: managerEmail => {
-                    if (managerEmail) {
+                  validate: engineerEmail => {
+                    if (engineerEmail) {
                       return true;
                     } else {
                       console.log('You need to enter an email!');
@@ -136,26 +149,28 @@ function teamMem(){
               },
               {
                 type: 'input',
-                name: 'engineerEmail',
+                name: 'github',
                 message: 'Enter the engineers github. (Required)',
-                validate: managerEmail => {
-                  if (managerEmail) {
+                validate: github => {
+                  if (github) {
                     return true;
                   } else {
-                    console.log('You need to enter an email!');
+                    console.log('You need to enter a github account!');
                     return false;
                   }
                 }
             },
         ])
         .then((data) => {
-            const engineer = new Engineer(data.engineerName, data.empID, data.engineerEmail, data.officeNum)
+          data.role = 'engineer'
+            const engineer = new Engineer(data.engineerName, data.empID, data.engineerEmail, data.role, data.github)
             teamMemArray.push(engineer)
             IDarr.push(data.empID)
             createTeam()
         })
     }
 
+    //creating intern and collection information from user regarding the intern
     function createIntern(){
             inquirer.prompt([
      
@@ -166,15 +181,15 @@ function teamMem(){
                   },
                   {
                       type: 'input',
-                      name: 'internEmpID',
+                      name: 'empID',
                       message: 'Please enter the Intern employee ID',
                   },
                     {
                       type: 'input',
                       name: 'internEmail',
                       message: 'Enter the email. (Required)',
-                      validate: managerEmail => {
-                        if (managerEmail) {
+                      validate: internEmail => {
+                        if (internEmail) {
                           return true;
                         } else {
                           console.log('You need to enter an email!');
@@ -184,10 +199,10 @@ function teamMem(){
                   },
                   {
                     type: 'input',
-                    name: 'internEmail',
-                    message: 'Enter the interns github. (Required)',
-                    validate: managerEmail => {
-                      if (managerEmail) {
+                    name: 'school',
+                    message: 'Enter the interns school. (Required)',
+                    validate: school => {
+                      if (school) {
                         return true;
                       } else {
                         console.log('You need to enter an email!');
@@ -197,7 +212,8 @@ function teamMem(){
                 },
             ])
             .then((data) => {
-                const intern = new Intern(data.internName, data.empID, data.internEmail, data.officeNum)
+              data.role = 'intern'
+                const intern = new Intern(data.internName, data.empID, data.internEmail, data.role, data.school)
                 teamMemArray.push(intern)
                 IDarr.push(data.empID)
                 createTeam()
@@ -207,7 +223,7 @@ function teamMem(){
     function buildTeam(team){
 
         writeToFile(team)
-        console.log(team)
+        // console.log(team)
     }
     createManager()
 }
